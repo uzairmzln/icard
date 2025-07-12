@@ -2,6 +2,7 @@
     import splitLayout from '../layout/splitLayout.vue';
 </script>
 <template>
-    <router-view />
-    <splitLayout></splitLayout>
+    <splitLayout>
+        <router-view />
+    </splitLayout>
 </template>
