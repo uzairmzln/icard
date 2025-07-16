@@ -1,19 +1,45 @@
 <script>
+import { useAuth } from '@/composables/useAuth.js';
+
+export default {
+    setup(){
+        const {
+            name,
+            email,
+            password,
+            // confirmPassword,
+            errors,
+            registerUser,
+            loginUser
+        } = useAuth();
+
+        return {
+            name,
+            email,
+            password,
+            // confirmPassword,
+            errors,
+            registerUser,
+            loginUser
+        };
+    }
+}
 
 </script>
 <template>
     <div class="bg-white p-8 w-full max-w-md">
         <h1 class="text-4xl font-bold mb-12 text-center">Create Account</h1>     
-        <form class="space-y-4">
+        <form @submit.prevent="registerUser" class="space-y-4">
             <div>
-                <label for="registerName" class="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name
+                <label for="userName" class="block text-sm font-medium text-gray-700 mb-2">
+                    Username
                 </label>
-                <input 
+                <input
+                    v-model="name" 
                     type="text" 
-                    id="registerName" 
+                    id="userName" 
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Enter your full name"
+                    placeholder="Enter your username"
                 >
             </div>
             <div>
@@ -21,6 +47,7 @@
                     Email address
                 </label>
                 <input 
+                    v-model="email"
                     type="email" 
                     id="registerEmail" 
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -32,13 +59,14 @@
                     Password
                 </label>
                 <input 
+                    v-model="password"
                     type="password" 
                     id="registerPassword" 
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Create password"
                 >
             </div>
-            <div>
+            <!-- <div>
                 <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-2">
                     Confirm Password
                 </label>
@@ -48,7 +76,7 @@
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Confirm password"
                 >
-            </div>
+            </div> -->
             <button 
                 type="submit" 
                 class="cursor-pointer w-full bg-blue-600 text-white mt-4 py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200"
