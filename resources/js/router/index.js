@@ -2,7 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import AuthLayout from '../components/layout/authLayout.vue';
-import DashboardLayout from '../components/layout/dashboardLayout.vue'
+import DashboardLayout from '../components/element/menu/sideMenu.vue';
 
 import Login from '../components/pages/login.vue';
 import Register from '../components/pages/register.vue';
